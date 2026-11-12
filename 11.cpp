@@ -110,24 +110,5 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-
-./ns3 run scratch/exp12
-./ns3 run "scratch/exp12 --n=8"
-
-//Plot using Python
-  import pandas as pd
-import matplotlib.pyplot as plt
-
-data = pd.read_csv("cwnd.csv")
-
-for socket in data["Socket"].unique():
-    subset = data[data["Socket"] == socket]
-    plt.plot(subset["Time"], subset["NewCwnd"],
-             label=socket)
-
-plt.xlabel("Time (seconds)")
-plt.ylabel("Congestion Window (bytes)")
-plt.title("TCP Congestion Window")
-plt.legend()
-plt.grid()
-plt.show()
+./ns3 run scratch/exp11
+./ns3 run "scratch/exp11 --packetCount=200"
